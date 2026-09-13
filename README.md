@@ -10,7 +10,6 @@ cp .env.example .env
 Edit `.env` and set:
 
 - `DISCORD_TOKEN`: your bot token
-- `DISCORD_GUILD_ID`: the ID of the Discord server where the bot was invited
 
 Start the bot:
 
@@ -18,7 +17,7 @@ Start the bot:
 npm run dev
 ```
 
-The `/age` command is registered to the configured guild immediately. Use it like:
+The `/age` command is registered globally. Discord can take up to an hour to propagate it to every server. Use it like:
 
 ```text
 /age date:15-08-2008

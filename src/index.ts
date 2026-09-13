@@ -10,14 +10,11 @@ import {
 
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
-const guildId = process.env.DISCORD_GUILD_ID;
 const apiUrl =
   process.env.AGEWISE_API_URL ?? "https://agewise1.netlify.app/api/age";
 
-if (!token || !clientId || !guildId) {
-  throw new Error(
-    "DISCORD_TOKEN, DISCORD_CLIENT_ID, and DISCORD_GUILD_ID are required",
-  );
+if (!token || !clientId) {
+  throw new Error("DISCORD_TOKEN and DISCORD_CLIENT_ID are required");
 }
 
 const command = new SlashCommandBuilder()
@@ -33,7 +30,7 @@ const command = new SlashCommandBuilder()
   );
 
 const rest = new REST({ version: "10" }).setToken(token);
-await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+await rest.put(Routes.applicationCommands(clientId), {
   body: [command.toJSON()],
 });
 
