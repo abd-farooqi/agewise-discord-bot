@@ -24,7 +24,7 @@ const command = new SlashCommandBuilder()
     option
       .setName("date")
       .setDescription(
-        "Date of birth in DD-MM-YYYY format, for example 01-01-2001",
+        "Date of birth in DD-MM-YYYY format",
       )
       .setRequired(true),
   );
@@ -49,7 +49,7 @@ client.on("interactionCreate", async (interaction) => {
 
   if (!match) {
     await interaction.reply({
-      content: "Use `DD-MM-YYYY`, for example `15-08-2008`.",
+      content: "Use the format `DD-MM-YYYY`.",
       ephemeral: true,
     });
     return;
